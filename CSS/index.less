@@ -1,0 +1,111 @@
+// Register.php & Login.php Style
+@bluecolor   : #1FA5FF;
+@orangecolor : #FFA500;
+@greycolor 	 : #F4F0EC;
+*{
+	font-family: 'Inter', sans-serif;
+	
+}
+html{
+    background: linear-gradient(118deg, rgba(1,209,253,1) 35%, rgba(1,209,253,1) 41%, rgba(1,209,253,1) 72%, rgba(0,212,255,1) 87%) !important;
+	body{
+		background: linear-gradient(118deg, rgba(1,209,253,1) 35%, rgba(1,209,253,1) 41%, rgba(1,209,253,1) 72%, rgba(0,212,255,1) 87%) !important;
+	}
+	.container{
+		justify-content: center;
+		display: flex;
+		.navbar{
+			background-color: @greycolor;
+			border-radius:30px; 
+			.container{
+				margin: 0 20px;
+				.logo{
+				width: 100px;
+				}
+				.nav-item{
+					background-color:@orangecolor;
+					padding: 0px 15px;
+					margin: 5px;
+					border-radius:30px;
+					.nav-link{
+					color: @greycolor;
+					font-weight: bold;
+					}
+				}
+				.collapse.navbar-collapse{
+					justify-content: flex-end;
+				}
+			}
+		}
+			
+		.card{
+			zoom: 1.1;
+			@media (max-width: 767px) { zoom: 0.9; }
+			border-radius: 30px;
+			padding: 50px;
+			background-color: @bluecolor ;
+			box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+			position: absolute;
+			top:25%;
+			.card-body{
+				padding:0;
+				.alert{
+					border-radius: 30px !important;
+    				font-weight: bold !important;
+    				width: 275px !important;
+				}
+			}
+			.login-img{
+				width: 250px;
+				margin:10px 0px;
+			}
+			.input.w-100{
+				margin:10px 0;
+			}
+            select{
+                margin:0 !important;
+            }
+			input, select{
+				border:@greycolor;
+				background-color:@greycolor;
+				border-radius:20px;
+				padding:8px 20px;
+				font-weight: bold;
+				text-align:center;
+				transition: .3s;
+			}
+			button{
+				transition: .3s;
+				border:none;
+				border-radius:30px;
+				background-color:@orangecolor;
+				color:#fff;
+			}
+			button.login{
+				width: 100%;
+				font-weight: bold;
+				padding:7px 0px;
+			}
+			button.register{
+				font-weight: bold;
+				padding:7px 20px;
+				margin:-11px 0px;
+			}
+			input:focus,input:hover,button:hover,button:focus{
+				outline: none;
+				transition: .3s;
+				box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+			}
+			.card-footer{
+				background-color:unset;
+				border:none;
+				margin:10px 0px;
+				p{
+					color:@greycolor;
+					font-weight: 700;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}

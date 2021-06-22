@@ -1,0 +1,149 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+html {
+  background: linear-gradient(118deg, #01d1fd 35%, #01d1fd 41%, #01d1fd 72%, #00d4ff 87%);
+}
+html body {
+  background-color: unset;
+}
+.btn {
+  background-color: #FFA500;
+  font-weight: bold;
+  border-radius: 30px;
+}
+.container .navbar {
+  background-color: #F4F0EC;
+  border-radius: 30px;
+}
+.container .navbar .container {
+  margin: 0 20px;
+}
+.container .navbar .container .logo {
+  width: 100px;
+}
+.container .navbar .container .nav-item {
+  background-color: #FFA500;
+  padding: 0px 15px;
+  margin: 5px;
+  border-radius: 30px;
+}
+.container .navbar .container .nav-item .nav-link {
+  color: #F4F0EC;
+  font-weight: bold;
+}
+.container .navbar .container .collapse.navbar-collapse {
+  justify-content: flex-end;
+}
+.container .cars-add .modal.fade .modal-content {
+  padding: 50px;
+  border-radius: 30px;
+  background-color: #1FA5FF;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.container .cars-add .modal.fade .modal-content .modal-title {
+  color: #fff;
+  font-weight: bold;
+}
+.container .cars-add .modal.fade .modal-content .btn {
+  color: #fff;
+  font-weight: bold;
+}
+.container .cars-add .modal.fade .modal-content .input.w-100 {
+  margin: 10px 0;
+}
+.container .cars-add .modal.fade .modal-content input,
+.container .cars-add .modal.fade .modal-content select {
+  border: #F4F0EC;
+  background-color: #F4F0EC;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.3s;
+}
+.container .cars-add .modal.fade .modal-content input:focus,
+.container .cars-add .modal.fade .modal-content input:hover,
+.container .cars-add .modal.fade .modal-content button:hover,
+.container .cars-add .modal.fade .modal-content button:focus {
+  outline: none;
+  transition: 0.3s;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.container .cars-list .card {
+  background-color: #F4F0EC;
+  border-radius: 30px;
+  padding: 30px;
+}
+.container .cars-list .card .card-img-top {
+  text-align: center;
+  padding: 12px;
+}
+.container .cars-list .card .card-body {
+  background-color: #1FA5FF;
+  border-radius: 30px;
+}
+.container .cars-list .card tr {
+  border-bottom: 1px solid #F4F0EC;
+  border-radius: 30px;
+}
+.container .cars-list .card th {
+  font-size: 18px;
+}
+.container .cars-list .card td {
+  color: #F4F0EC;
+  font-weight: bold;
+  font-size: 18px;
+}
+.container .cars-list .card button {
+  transition: 0.3s;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  height: 40px;
+  width: 120px;
+}
+.container .cars-list .card .btn {
+  background-color: #FFA500;
+}
+.container .cars-list .modal.fade .modal-content {
+  padding: 50px;
+  border-radius: 30px;
+  background-color: #1FA5FF;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.container .cars-list .modal.fade .modal-content .modal-title {
+  color: #fff;
+  font-weight: bold;
+}
+.container .cars-list .modal.fade .modal-content .btn {
+  color: #fff;
+  font-weight: bold;
+}
+.container .cars-list .modal.fade .modal-content .modal-header .btn {
+  width: unset;
+}
+.container .cars-list .modal.fade .modal-content .input.w-100 {
+  margin: 10px 0;
+}
+.container .cars-list .modal.fade .modal-content input,
+.container .cars-list .modal.fade .modal-content select {
+  border: #F4F0EC;
+  background-color: #F4F0EC;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.3s;
+}
+.container .cars-list .modal.fade .modal-content input:focus,
+.container .cars-list .modal.fade .modal-content input:hover,
+.container .cars-list .modal.fade .modal-content button:hover,
+.container .cars-list .modal.fade .modal-content button:focus,
+.container .cars-list .modal.fade .modal-content select:focus-visible,
+.container .cars-list .modal.fade .modal-content select:focus-within {
+  outline: none !important;
+  transition: 0.3s;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

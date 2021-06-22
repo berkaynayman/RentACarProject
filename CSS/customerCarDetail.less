@@ -1,0 +1,72 @@
+@bluecolor   : #1FA5FF;
+@orangecolor : #FFA500;
+@greycolor 	 : #F4F0EC;
+*{
+	font-family: 'Inter', sans-serif;
+}	
+html{
+    background: linear-gradient(118deg, rgba(1,209,253,1) 35%, rgba(1,209,253,1) 41%, rgba(1,209,253,1) 72%, rgba(0,212,255,1) 87%);
+	body{
+		background-color:unset;
+	}
+}
+.btn{
+				background-color:@orangecolor;
+				font-weight: bold;
+				border-radius:30px;
+}
+	.container{
+		.navbar{
+			border-radius:30px; 
+			.container{
+				margin: 0 20px;
+				.nav-item{
+					background-color:white;
+					padding: 10px 30px;
+					margin: 5px;
+					border-radius:30px;
+					.nav-link{
+					color: @greycolor;
+					font-weight: bold;
+					}
+				}
+				.nav-item.active{
+					background-color: @orangecolor;
+				}
+				.collapse.navbar-collapse{
+					justify-content: center;
+				}
+			}
+		}
+		.car-detail{
+            margin:20px 0px;
+            .row{
+                justify-content: space-around;
+                .col-xl-7{
+                    text-align: center;
+                    background-color: @greycolor;
+                    border-radius: 30px;
+                    padding: 50px 0px;
+                    height: 265px;
+                    .car-image{
+                        width:50%;
+                    }
+                }  
+                .col-xl-4{
+					background-color: @greycolor;
+					border-radius: 30px;
+					table{
+						border-radius: 30px;
+						tr{text-transform: uppercase;}
+						td{text-align: right;}
+					}
+					.date-price-info{
+						h3{ color: @bluecolor;
+							span{font-size: 20px;color: black;}}
+						h2{color:@orangecolor;border:2px solid @orangecolor;border-radius: 30px;padding: 3px 0px;}
+					}
+                }
+            } 
+        }
+		
+	}
