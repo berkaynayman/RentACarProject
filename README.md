@@ -30,7 +30,6 @@
 
 <br/>
 <br/>
----
 
 ### 👁️ Admin Login
 <img src="https://github.com/berkaynayman/RentACarProject/blob/main/adminlogindesign.png" />
