@@ -17,8 +17,6 @@
 <br />
 <br />
 
----
-
 ### 📰 Proje Description
 1️⃣ <b>Admin Panel.</b> <br/>
 --1️⃣.1️⃣ Add Car in Admin Panel.<br/>
