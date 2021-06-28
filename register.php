@@ -81,7 +81,7 @@ if(isset($_GET["case"])){
 					<input class="w-100" type="text" name="namesurname" value="" placeholder="Ad ve Soyad">
 					</div>
 					<div class="input w-100">
-						<input class="w-100" type="tel" name="phone" value="" 
+						<input class="w-100" maxlength="11" minlength="11" type="tel" name="phone" value="" 
 						placeholder="+90 (___) ___ __ __" id="phone">
 					</div>
 					<div class="input w-100">

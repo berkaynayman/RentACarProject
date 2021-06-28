@@ -42,10 +42,13 @@ if(isset($_POST["carplaque"])){$carplaque = $_POST["carplaque"];}else{$carplaque
 
 if(isset($_POST["carprice"])){$carprice = $_POST["carprice"];}else{$carprice = "";}
 
+$bulunacak = array('ç','Ç','ı','İ','ğ','Ğ','ü','ö','Ş','ş','Ö','Ü',',',' ','(',')','[',']'); 
+$degistir  = array('c','C','i','I','g','G','u','o','S','s','O','U','','_','','','',''); 
+
 if(isset($_FILES["carimage"])){
     $foo = new upload($_FILES["carimage"]);
     if ($foo->uploaded) {
-        $foo->file_new_name_body = trim($admininfo->adminid) . $admininfo->adminnamesurname . "araba";
+        $foo->file_new_name_body = trim($admininfo->adminid) . str_replace($bulunacak,$degistir,$admininfo->adminnamesurname) . "araba";
         $foo->process("admincarsimages");
         if ($foo->processed) {
           $carimagename = $foo->file_dst_name;

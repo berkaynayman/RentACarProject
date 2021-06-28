@@ -38,7 +38,7 @@ if( $regpassword == $regpasswordagain ) {
     print_r($mailcontrol);
 
 	if ($mailcontrol>0) {
-		Header("Location:http://localhost/RentACarProject/customerRegister.php?case=notmail");
+		Header("Location:http://localhost/RentACarProject/Customer/customerRegister.php?case=notmail");
 		exit();
 	}
 

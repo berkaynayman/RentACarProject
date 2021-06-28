@@ -13,6 +13,7 @@ html body {
   border-radius: 30px;
 }
 .container .navbar {
+  background-color: #F4F0EC;
   border-radius: 30px;
 }
 .container .navbar .container {
@@ -22,8 +23,8 @@ html body {
   width: 100px;
 }
 .container .navbar .container .nav-item {
-  background-color: white;
-  padding: 10px 30px;
+  background-color: #FFA500;
+  padding: 0px 15px;
   margin: 5px;
   border-radius: 30px;
 }
@@ -31,33 +32,7 @@ html body {
   color: #F4F0EC;
   font-weight: bold;
 }
-.container .navbar .container .nav-item.active {
-  background-color: #FFA500;
-}
 .container .navbar .container .collapse.navbar-collapse {
-  justify-content: center;
-}
-.container .navbar.customer {
-  background-color: #F4F0EC;
-  border-radius: 30px;
-}
-.container .navbar.customer .container {
-  margin: 0 20px;
-}
-.container .navbar.customer .container .logo {
-  width: 100px;
-}
-.container .navbar.customer .container .nav-item {
-  background-color: #FFA500;
-  padding: 0px 15px;
-  margin: 5px;
-  border-radius: 30px;
-}
-.container .navbar.customer .container .nav-item .nav-link {
-  color: #F4F0EC;
-  font-weight: bold;
-}
-.container .navbar.customer .container .collapse.navbar-collapse {
   justify-content: flex-end;
 }
 .container .cars-add .modal.fade .modal-content {
@@ -111,15 +86,6 @@ html body {
 .container .cars-list .card tr {
   border-bottom: 1px solid #F4F0EC;
   border-radius: 30px;
-}
-.container .cars-list .card tr .modal.fade .modal-body .row {
-  display: flex;
-  width: 100%;
-}
-.container .cars-list .card tr .modal.fade .modal-body .row .col-xl-6 {
-  display: flex;
-  width: 100%;
-  text-align: center;
 }
 .container .cars-list .card th {
   font-size: 18px;

@@ -16,3 +16,5 @@ define('MYSQL_USER',	'root');
 define('MYSQL_PASS',	'');
 
 include 'db.php';
+
+?>

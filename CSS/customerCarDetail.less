@@ -11,9 +11,9 @@ html{
 	}
 }
 .btn{
-				background-color:@orangecolor;
-				font-weight: bold;
-				border-radius:30px;
+	background-color:@orangecolor;
+	font-weight: bold;
+	border-radius:30px;
 }
 	.container{
 		.navbar{
@@ -35,6 +35,29 @@ html{
 				}
 				.collapse.navbar-collapse{
 					justify-content: center;
+				}
+			}
+		}
+		.navbar.customer{
+			background-color: @greycolor;
+			border-radius:30px; 
+			.container{
+				margin: 0 20px;
+				.logo{
+				width: 100px;
+				}
+				.nav-item{
+					background-color:@orangecolor;
+					padding: 0px 15px;
+					margin: 5px;
+					border-radius:30px;
+					.nav-link{
+					color: @greycolor;
+					font-weight: bold;
+					}
+				}
+				.collapse.navbar-collapse{
+					justify-content: flex-end;
 				}
 			}
 		}

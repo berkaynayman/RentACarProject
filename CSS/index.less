@@ -14,29 +14,32 @@ html{
 	.container{
 		justify-content: center;
 		display: flex;
-		.navbar{
-			background-color: @greycolor;
-			border-radius:30px; 
-			.container{
-				margin: 0 20px;
-				.logo{
-				width: 100px;
-				}
-				.nav-item{
-					background-color:@orangecolor;
-					padding: 0px 15px;
-					margin: 5px;
-					border-radius:30px;
-					.nav-link{
-					color: @greycolor;
-					font-weight: bold;
+		section{
+			width: 100%;	
+			.navbar{
+				background-color: @greycolor;
+				border-radius:30px; 
+				.container{
+					margin: 0 20px;
+					.logo{
+					width: 100px;
+					}
+					.nav-item{
+						background-color:@orangecolor;
+						padding: 0px 15px;
+						margin: 5px;
+						border-radius:30px;
+						.nav-link{
+						color: @greycolor;
+						font-weight: bold;
+						}
+					}
+					.collapse.navbar-collapse{
+						justify-content: flex-end;
 					}
 				}
-				.collapse.navbar-collapse{
-					justify-content: flex-end;
-				}
 			}
-		}
+		}	
 			
 		.card{
 			zoom: 1.1;
@@ -49,11 +52,23 @@ html{
 			top:25%;
 			.card-body{
 				padding:0;
-				.alert{
-					border-radius: 30px !important;
-    				font-weight: bold !important;
-    				width: 275px !important;
+				.card-img-top{
+					i.far.fa-check-circle{
+						font-size: 90px;
+						color:@orangecolor;
+					}
+					i.fas.fa-exclamation-circle{
+						font-size: 90px;
+						color: #F32013;
+					}
 				}
+				h3{
+					color:@orangecolor;
+				}
+				h3.hata{
+					color:#F32013;
+				}
+				
 			}
 			.login-img{
 				width: 250px;
@@ -106,6 +121,9 @@ html{
 					font-size: 12px;
 				}
 			}
+		}
+		.card.okey{
+			background-color: @greycolor;
 		}
 	}
 }

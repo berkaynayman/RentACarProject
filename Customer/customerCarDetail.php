@@ -2,18 +2,21 @@
 
 include "../Class/config.php";
 session_start();
-echo $_GET["selectCarId"];
 $_SESSION["selectCarId"] = $_GET["selectCarId"];
 $carId = $_GET["selectCarId"];
+
+if(!empty($_SESSION["customerid"]))
+{
+	$customerId = $_SESSION["customerid"];
+}
 
 $listCarsInfo=DB::getRow('SELECT * FROM admincars WHERE carid = ?',
         array($carId)
 );
 
-print_r($listCarsInfo);
+$_SESSION["admincarid"] = $listCarsInfo->adminid;
 
 $carDayPrice = floatval($listCarsInfo->carprice);
-echo $carDayPrice;
 
 $date1=$_SESSION["date1"];
 $date2=$_SESSION["date2"];
@@ -23,7 +26,6 @@ $datee2=date_create($_SESSION["date2"]);
 
 $diff = date_diff($datee1,$datee2);
 $totalDay = $diff->format("%a");
-echo "iki tarih arasındaki fark " . "<br>" . $totalDay ;
 
 $carPrice = $carDayPrice * $totalDay;
 
@@ -64,6 +66,41 @@ $_SESSION["carprice"] = $carPrice;
 </head>
 <body>
 	<div class="container mt-5 mb-5">
+    <nav class="navbar navbar-expand-xl navbar-light customer">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="../images/logo.png" class="logo" alt="">CUSTOMER
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <?php if(!empty($_SESSION["customerid"])){if($customerId!=""){ ?>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="customerAccount.php">Hesabım <i class="far fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="customerLogin.php">İşlemler <i class="fas fa-history"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="../Class/customer-exit.php">Çıkış Yap <i class="fas fa-sign-out-alt"></i></a>
+                </li>
+              <?php }}else{ ?>
+                <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="customerLogin.php">GİRİŞ YAP <i class="far fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="customerRegister.php">KAYIT OL <i class="fas fa-user-plus"></i></a>
+                </li>
+              <?php } ?>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+
+
 		<nav class="navbar navbar-expand-xl navbar-light">
 		  <div class="container">
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

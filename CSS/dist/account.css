@@ -1,0 +1,121 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+html {
+  background: linear-gradient(118deg, #01d1fd 35%, #01d1fd 41%, #01d1fd 72%, #00d4ff 87%);
+}
+html body {
+  background-color: unset;
+}
+.container .navbar {
+  background-color: #F4F0EC;
+  border-radius: 30px;
+}
+.container .navbar .container {
+  margin: 0 20px;
+}
+.container .navbar .container .logo {
+  width: 100px;
+}
+.container .navbar .container .nav-item {
+  background-color: #FFA500;
+  padding: 0px 15px;
+  margin: 5px;
+  border-radius: 30px;
+}
+.container .navbar .container .nav-item .nav-link {
+  color: #F4F0EC;
+  font-weight: bold;
+}
+.container .navbar .container .collapse.navbar-collapse {
+  justify-content: flex-end;
+}
+.container .account-info {
+  display: flex;
+  justify-content: center;
+}
+.container .account-info .card {
+  zoom: 1.1;
+  border-radius: 30px;
+  padding: 50px;
+  background-color: #1FA5FF;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: absolute;
+}
+@media (max-width: 767px) {
+  .container .account-info .card {
+    zoom: 0.9;
+  }
+}
+.container .account-info .card .card-body {
+  padding: 0;
+}
+.container .account-info .card .input.w-100 {
+  margin: 10px 0;
+}
+.container .account-info .card input {
+  border: #F4F0EC;
+  background-color: #F4F0EC;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.3s;
+}
+.container .account-info .card button {
+  transition: 0.3s;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+}
+.container .account-info .card button.save {
+  width: 100%;
+  font-weight: bold;
+  padding: 7px 0px;
+  background-color: #FFA500;
+}
+.container .account-info .card input:focus,
+.container .account-info .card input:hover,
+.container .account-info .card button:hover,
+.container .account-info .card button:focus {
+  outline: none;
+  transition: 0.3s;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.container .account-info .card .info-change .modal.fade .modal-content {
+  padding: 50px;
+  border-radius: 30px;
+  background-color: #1FA5FF;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.container .account-info .card .info-change .modal.fade .modal-content .modal-title {
+  color: #fff;
+  font-weight: bold;
+}
+.container .account-info .card .info-change .modal.fade .modal-content .btn {
+  color: #fff;
+  font-weight: bold;
+}
+.container .account-info .card .info-change .modal.fade .modal-content .btn.one {
+  background-color: #FFA500;
+}
+.container .account-info .card .info-change .modal.fade .modal-content .input.w-100 {
+  margin: 10px 0;
+}
+.container .account-info .card .info-change .modal.fade .modal-content input {
+  border: #F4F0EC;
+  background-color: #F4F0EC;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.3s;
+}
+.container .account-info .card .info-change .modal.fade .modal-content input:focus,
+.container .account-info .card .info-change .modal.fade .modal-content input:hover,
+.container .account-info .card .info-change .modal.fade .modal-content button:hover,
+.container .account-info .card .info-change .modal.fade .modal-content button:focus {
+  outline: none;
+  transition: 0.3s;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

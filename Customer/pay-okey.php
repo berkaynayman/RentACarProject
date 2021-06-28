@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if(!empty($_SESSION["customerid"]))
 {
 	$customerId = $_SESSION["customerid"];
@@ -11,17 +10,6 @@ if(isset($_GET["case"])){
 }else{
 	$getcase = "";
 }
-
-$city = array('Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin',
-'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale',
-'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir',
-'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkari', 'Hatay', 'Isparta', 'Mersin', 'İstanbul', 'İzmir', 
-'Kars', 'Kastamonu', 'Kayseri', 'Kırklareli', 'Kırşehir', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya', 
-'Manisa', 'Kahramanmaraş', 'Mardin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Rize', 'Sakarya',
-'Samsun', 'Siirt', 'Sinop', 'Sivas', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Şanlıurfa', 'Uşak',
-'Van', 'Yozgat', 'Zonguldak', 'Aksaray', 'Bayburt', 'Karaman', 'Kırıkkale', 'Batman', 'Şırnak',
-'Bartın', 'Ardahan', 'Iğdır', 'Yalova', 'Karabük', 'Kilis', 'Osmaniye', 'Düzce');
-
 ?>
 
 <!DOCTYPE html>
@@ -85,69 +73,29 @@ $city = array('Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Anta
 				</div>
 			</nav>
 		</section>
-
-		<div class="card text-center">
+		
+		<div class="card okey text-center">
 			<div class="card-body">
-				<?php
-				
-					if($getcase=="datefalse"){
-						?>
-							<div class="alert alert-danger" role="alert">
-							Teslim alış, <br/>Teslim ediliş <br/> tarihinden önce olamaz.
-							</div>
-						<?php
-					}
-				/*
-					if($getcase=="notmail"){
-						?>
-							<div class="alert alert-danger" role="alert">
-							Bu mail adresi kullanılamaz. Tekrar Deneyin.
-							</div>
-						<?php
-					}
+                <div class="card-img-top">
+                    <?php
+                        if ($getcase == "true") 
+                        {
+                            ?>
+                                <i class="far fa-check-circle"></i>
+                                </div>
+				                <h3 class="mt-3 okey">ÖDEME İŞLEMİ GERÇEKLEŞTİRİLMİŞTİR</h3>
+                            <?php
+                        }
+                        if($getcase == "false")
+                        {
+                            ?>
+                                <i class="fas fa-exclamation-circle"></i>
+                                </div>
+				                <h3 class="mt-3 hata">BİR SORUN OLUŞTU</h3>
+                            <?php
+                        }
+                    ?>
 
-					if($getcase=="succes"){
-						?>
-							<div class="alert alert-success" role="alert">
-							Mail adresinizde gelen linke tıklayın.
-							</div>
-						<?php
-					}
-
-					if($getcase=="danger"){
-						?>
-							<div class="alert alert-danger" role="alert">
-							Bir sorun oluştu tekrar deneyin.
-							</div>
-						<?php
-					}
-
-					if($getcase=="activationtrue"){
-						?>
-							<div class="alert alert-success" role="alert">
-							Mail adresiniziz aktivasyon işlemi yapılmıştır.
-							</div>
-						<?php
-					}
-				*/
-				?>
-				<form action="customerCarsList.php" method="POST" accept-charset="utf-8">
-					<select name="selectcity" class="input w-100" required>
-						<option value="">Şehir Seçiniz</option>
-						<?php foreach ($city as $varCity) { ?>
-							<option value="<?= array_search($varCity, $city) ?>"> <?= $varCity?> </option>
-						<?php } ?>
-					</select>
-					<div class="input w-100">
-						<input class="w-100" min="<?php echo date("Y-m-d"); ?>" type="date" name="date1" required>
-					</div>
-					<div class="input w-100">
-						<input class="w-100" min="<?php echo date("Y-m-d"); ?>" type="date" name="date2" required>
-					</div>
-					<div class="input w-100">
-						<button class="button login" type="submit">ARAÇLARI GÖR</button>					
-					</div>
-				</form>
 			</div>
 		</div>
 	</div>

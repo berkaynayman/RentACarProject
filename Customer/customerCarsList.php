@@ -1,6 +1,14 @@
 <?php
+error_reporting(0);
+
 include "../Class/config.php";
 session_start();
+
+if(!empty($_SESSION["customerid"]))
+{
+	$customerId = $_SESSION["customerid"];
+}
+
 $city = array('Adana', 'Adıyaman', 'Afyon', 'Ağrı', 'Amasya', 'Ankara', 'Antalya', 'Artvin',
 'Aydın', 'Balıkesir', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale',
 'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir',
@@ -16,6 +24,9 @@ $_SESSION["date2"] = $_POST["date2"];
 
 $date1 = $_SESSION["date1"];
 $date2 = $_SESSION["date2"];
+if ($date1>$date2) {
+	Header("Location:http://localhost/RentACarProject/Customer/index.php?case=datefalse");
+}
 
 $selectCity = $_POST["selectcity"];
 $listCarCity= $city[$selectCity] ;
@@ -28,12 +39,16 @@ $listCarId = array();
 for($i=0;$i<count($admincars);$i++){
     array_push($listCarId, $admincars[$i]->adminid) ;
 } 
+$nowdate=date("Y-m-d");
+DB::query(
+	'UPDATE operations SET operationcase=? WHERE lastdate<=?',
+	array(0,$nowdate)
+);
 
 foreach ($listCarId as $id) {
         $listCarsInfo=DB::get('SELECT * FROM admincars WHERE adminid = ? AND carcase=?',
         array($id,1)
         );
-        print_r($listCarsInfo);
 }
 ?>
 
@@ -72,6 +87,41 @@ foreach ($listCarId as $id) {
 </head>
 <body>
 	<div class="container mt-5 mb-5">
+		<nav class="navbar navbar-expand-xl navbar-light customer">
+			<div class="container">
+				<a class="navbar-brand" href="#">
+					<img src="../images/logo.png" class="logo" alt="">CUSTOMER
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav">
+						<?php if(!empty($_SESSION["customerid"])){if($customerId!=""){ ?>
+							<li class="nav-item">
+								<a class="nav-link" aria-current="page" href="customerAccount.php">Hesabım <i class="far fa-user"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" aria-current="page" href="customerLogin.php">İşlemler <i class="fas fa-history"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" aria-current="page" href="../Class/customer-exit.php">Çıkış Yap <i class="fas fa-sign-out-alt"></i></a>
+							</li>
+						<?php }}else{ ?>
+							<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="customerLogin.php">GİRİŞ YAP <i class="far fa-user"></i></a>
+							</li>
+							<li class="nav-item">
+							<a class="nav-link" href="customerRegister.php">KAYIT OL <i class="fas fa-user-plus"></i></a>
+							</li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+
 		<nav class="navbar navbar-expand-xl navbar-light">
 		  <div class="container">
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,16 +130,16 @@ foreach ($listCarId as $id) {
 		    <div class="collapse navbar-collapse" id="navbarNavDropdown">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link" aria-current="page" href="account.php">TARİH SEÇİMİ</a>
+		          <a class="nav-link">TARİH SEÇİMİ</a>
 		        </li>
 		        <li class="nav-item active">
-		          <a class="nav-link" href="#">ARAÇ SEÇİMİ</a>
+		          <a class="nav-link">ARAÇ SEÇİMİ</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#">ARAÇ DETAY</a>
+		          <a class="nav-link">ARAÇ DETAY</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="Class/exit.php">ÖDEME EKRANI
+		          <a class="nav-link">ÖDEME EKRANI
 		          </a>
 		        </li>
 		      </ul>
@@ -152,7 +202,32 @@ foreach ($listCarId as $id) {
 						$listCarsInfo=DB::get('SELECT * FROM admincars WHERE adminid = ? AND carcase=?',
 						array($id,1)
 						);
-						foreach ($listCarsInfo as $carinfo ){ ?>
+						foreach ($listCarsInfo as $carinfo ){
+							$controlid = $carinfo->carid;
+
+							$cardatecontrol = DB::getRow("SELECT * FROM operations WHERE carid=? AND operationcase=?",array(
+								$controlid,
+								1
+							));
+
+							//print_r($cardatecontrol);
+							if($cardatecontrol>0){
+								$datecontrolfirstdate =$cardatecontrol->firstdate;
+								$datecontrollastdate = $cardatecontrol->lastdate;
+								$startDate = strtotime($datecontrolfirstdate); // başlangıç tarihi
+								$finishDate = strtotime($datecontrollastdate);// bitiş tarihi	
+								$customerRentDays = array();
+								for ($i = $startDate; $i <= $finishDate; $i = $i + 86400) {
+									array_push($customerRentDays,date( 'Y-m-d', $i ));
+									/*echo date( 'Y-m-d', $i ); // aktif gün
+									echo '<br/>';*/
+								}
+								if ( (in_array($date1, $customerRentDays)) OR (in_array($date2, $customerRentDays)) ) {
+									continue;
+								}
+							}	
+						
+							?>
 							<div class="col-xl-4 col-md-6 col-sm-12">
 								<div class="card mt-4">
 									<div class="card-img-top">
@@ -162,7 +237,7 @@ foreach ($listCarId as $id) {
 										<table class="table">
 										  <tbody>
 											<tr>
-											  <th>Marka</th>
+											  <th>Marka<?=$carinfo->carid?></th>
 											  <td><?=$carinfo->carbrand?></td>
 											</tr>
 											<tr>
@@ -191,9 +266,62 @@ foreach ($listCarId as $id) {
 											</tr>
 											<tr>
 											   <th class="text-center">
-												 <button type="button" class="btn text-white w-100" data-bs-toggle="modal">
-													HIZLI BAKIŞ <i class="fas fa-eye"></i>
+											   <button type="button" class="btn text-white" data-bs-toggle="modal" data-bs-target="#caredit<?=$carinfo->carid?>">
+												HIZLI BAKIŞ
 												</button>
+
+												<!-- Modal -->
+												<div class="modal fade" id="caredit<?=$carinfo->carid?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-dialog-centered">
+													<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Hızlı Bakış</h5>
+														<button type="button" class="btn" data-bs-dismiss="modal" >X</button>
+													</div>
+													<div class="modal-body">
+														<div class="row">
+															<div class="col-xl-6">
+																<img src="../Class/admincarsimages/<?=$carinfo->carimage?>" alt="">
+															</div>
+															<div class="col-xl-6">
+																<table class="table">
+																	<tbody>
+																		<tr>
+																		<th>Marka<?=$carinfo->carid?></th>
+																		<td><?=$carinfo->carbrand?></td>
+																		</tr>
+																		<tr>
+																		<th>Model</th>
+																		<td><?=$carinfo->carmodel?></td>
+																		</tr>
+																		<tr>
+																		<th>Yakıt</th>
+																		<td><?=$carinfo->carfuel?></td>
+																		</tr>
+																		<tr>
+																		<th>Vites</th>
+																		<td><?=$carinfo->carvites?></td>
+																		</tr>
+																		<tr>
+																		<th>Renk</th>
+																		<td><?=$carinfo->carcolor?></td>
+																		</tr>
+																		<tr>
+																		<th>Plaka</th>
+																		<td><?=$carinfo->carplaque?></td>
+																		</tr>
+																		<tr>
+																		<th>Fiyat</th>
+																		<td><?=$carinfo->carprice?>₺</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+												</div>
+
 												</th>
 												<th class="text-center">
 													<a href="customerCarDetail.php?selectCarId=<?=$carinfo->carid?>">												

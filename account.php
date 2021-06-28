@@ -63,7 +63,7 @@ if(isset($_GET["case"])){
 		          <a class="nav-link" aria-current="page" href="#">HESABIM</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="#">HAREKETLER</a>
+		          <a class="nav-link" href="moves.php">HAREKETLER</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="cars.php">ARAÇLAR</a>
